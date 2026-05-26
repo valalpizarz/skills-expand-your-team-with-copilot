@@ -504,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const shareText = `Check out the ${name} activity at Mergington High School! ${formattedSchedule}`;
     const encodedShareUrl = encodeURIComponent(shareUrl);
     const encodedShareText = encodeURIComponent(shareText);
-    const twitterShareLink = `https://twitter.com/intent/tweet?text=${encodedShareText}&url=${encodedShareUrl}`;
+    const xShareLink = `https://twitter.com/intent/tweet?text=${encodedShareText}&url=${encodedShareUrl}`;
     const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`;
     const emailShareLink = `mailto:?subject=${encodeURIComponent(
       `Mergington activity: ${name}`
@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="share-actions">
         <span>Share:</span>
         <div class="share-links">
-          <a class="share-link x-share" href="${twitterShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on X">X</a>
+          <a class="share-link x-share" href="${xShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on X">X</a>
           <a class="share-link facebook-share" href="${facebookShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on Facebook">Facebook</a>
           <a class="share-link email-share" href="${emailShareLink}" aria-label="Share ${name} by email">Email</a>
         </div>
