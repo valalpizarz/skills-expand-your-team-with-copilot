@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const themeIcon = themeToggleButton.querySelector(".theme-icon");
-    const themeText = themeToggleButton.querySelector("span:last-child");
+    const themeText = themeToggleButton.querySelector(".theme-text");
 
     if (!themeIcon || !themeText) {
       return;
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function toggleTheme() {
-    const currentTheme = document.body.dataset.theme === "dark" ? "dark" : "light";
+    const currentTheme = document.body.dataset.theme || "light";
     const nextTheme = currentTheme === "dark" ? "light" : "dark";
     localStorage.setItem(themeStorageKey, nextTheme);
     applyTheme(nextTheme);
