@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     community: { label: "Community", color: "#fff3e0", textColor: "#e65100" },
     technology: { label: "Technology", color: "#e8eaf6", textColor: "#3949ab" },
   };
+  const SCHOOL_NAME = "Mergington High School";
 
   // State for activities and filters
   let allActivities = {};
@@ -501,13 +502,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const shareUrl = `${window.location.origin}${window.location.pathname}?activity=${encodeURIComponent(
       name
     )}`;
-    const shareText = `Check out the ${name} activity at Mergington High School! ${formattedSchedule}`;
+    const shareText = `Check out the ${name} activity at ${SCHOOL_NAME}! ${formattedSchedule}`;
     const encodedShareUrl = encodeURIComponent(shareUrl);
     const encodedShareText = encodeURIComponent(shareText);
-    const xShareLink = `https://twitter.com/intent/tweet?text=${encodedShareText}&url=${encodedShareUrl}`;
+    const xShareLink = `https://x.com/intent/tweet?text=${encodedShareText}&url=${encodedShareUrl}`;
     const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`;
     const emailShareLink = `mailto:?subject=${encodeURIComponent(
-      `Mergington activity: ${name}`
+      `${SCHOOL_NAME} activity: ${name}`
     )}&body=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`;
 
     // Create activity tag
