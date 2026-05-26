@@ -305,6 +305,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return details.schedule;
   }
 
+  function escapeHtmlAttribute(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
   // Function to determine activity type (this would ideally come from backend)
   function getActivityType(activityName, description) {
     const name = activityName.toLowerCase();
@@ -499,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Format the schedule using the new helper function
     const formattedSchedule = formatSchedule(details);
+    const escapedActivityNameForAttr = escapeHtmlAttribute(name);
     const shareUrl = `${window.location.origin}${window.location.pathname}?activity=${encodeURIComponent(
       name
     )}`;
@@ -551,7 +561,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${
                 currentUser
                   ? `
-                <span class="delete-participant tooltip" data-activity="${name}" data-email="${email}">
+                <span class="delete-participant tooltip" data-activity="${escapedActivityNameForAttr}" data-email="${email}">
                   ✖
                   <span class="tooltip-text">Unregister this student</span>
                 </span>
@@ -567,16 +577,16 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="share-actions">
         <span>Share:</span>
         <div class="share-links">
-          <a class="share-link x-share" href="${xShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on X">X</a>
-          <a class="share-link facebook-share" href="${facebookShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on Facebook">Facebook</a>
-          <a class="share-link email-share" href="${emailShareLink}" aria-label="Share ${name} by email">Email</a>
+          <a class="share-link x-share" href="${xShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${escapedActivityNameForAttr} on X">X</a>
+          <a class="share-link facebook-share" href="${facebookShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${escapedActivityNameForAttr} on Facebook">Facebook</a>
+          <a class="share-link email-share" href="${emailShareLink}" aria-label="Share ${escapedActivityNameForAttr} by email">Email</a>
         </div>
       </div>
       <div class="activity-card-actions">
         ${
           currentUser
             ? `
-          <button class="register-button" data-activity="${name}" ${
+          <button class="register-button" data-activity="${escapedActivityNameForAttr}" ${
                 isFull ? "disabled" : ""
               }>
             ${isFull ? "Activity Full" : "Register Student"}
