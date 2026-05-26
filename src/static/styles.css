@@ -32,6 +32,23 @@
   --info-light: #d1ecf1;
 }
 
+body[data-theme="dark"] {
+  --primary: #3f51b5;
+  --primary-light: #5c6bc0;
+  --primary-dark: #2c3a91;
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border: #424242;
+  --border-light: #303030;
+  --border-focus: #616161;
+  --success-light: #1e4620;
+  --warning-light: #5c4600;
+  --error-light: #5a1f1f;
+  --info-light: #1f4c55;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -621,11 +638,23 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 #user-status {
   display: flex;
   align-items: center;
+}
+
+#theme-toggle-button {
+  font-size: 0.8rem;
+}
+
+.theme-icon {
+  font-size: 0.95rem;
 }
 
 #user-info {
