@@ -498,6 +498,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Format the schedule using the new helper function
     const formattedSchedule = formatSchedule(details);
+    const shareUrl = `${window.location.origin}${window.location.pathname}?activity=${encodeURIComponent(
+      name
+    )}`;
+    const shareText = `Check out the ${name} activity at Mergington High School! ${formattedSchedule}`;
+    const encodedShareUrl = encodeURIComponent(shareUrl);
+    const encodedShareText = encodeURIComponent(shareText);
+    const twitterShareLink = `https://twitter.com/intent/tweet?text=${encodedShareText}&url=${encodedShareUrl}`;
+    const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`;
+    const emailShareLink = `mailto:?subject=${encodeURIComponent(
+      `Mergington activity: ${name}`
+    )}&body=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`;
 
     // Create activity tag
     const tagHtml = `
@@ -551,6 +562,14 @@ document.addEventListener("DOMContentLoaded", () => {
             )
             .join("")}
         </ul>
+      </div>
+      <div class="share-actions">
+        <span>Share:</span>
+        <div class="share-links">
+          <a class="share-link x-share" href="${twitterShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on X">X</a>
+          <a class="share-link facebook-share" href="${facebookShareLink}" target="_blank" rel="noopener noreferrer" aria-label="Share ${name} on Facebook">Facebook</a>
+          <a class="share-link email-share" href="${emailShareLink}" aria-label="Share ${name} by email">Email</a>
+        </div>
       </div>
       <div class="activity-card-actions">
         ${
