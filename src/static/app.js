@@ -456,7 +456,6 @@ document.addEventListener("DOMContentLoaded", () => {
         name.toLowerCase(),
         details.description.toLowerCase(),
         formatSchedule(details).toLowerCase(),
-        activityDifficulty,
       ].join(" ");
 
       if (
